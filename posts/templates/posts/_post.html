@@ -1,0 +1,17 @@
+<div class="card text-center w-50">
+    <div class="card-header">
+        <time class="time">
+            <a href="{% url 'posts:single' username=post.user.username pk=post.pk %}"></a>
+            {{ post.created_at }}
+        </time>
+    </div>
+    <div class="card-body">
+        <a class="card-title"
+           href="{% url 'posts:for_user' username=post.user.username %}">@{{ post.user.username }}</a>
+        <p class="card-text">{{ post.message_html|safe }}</p>
+        {% if user.is_authenticated and post.user == user %}
+            <a href="{% url 'posts:delete' pk=post.pk %}" title="delete" class="btn btn-primary">Delete</a>
+        {% endif %}
+    </div>
+</div>
+<br>

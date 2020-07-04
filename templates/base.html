@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Social Hub</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'home' %}">Social Hub</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    {% if user.is_authenticated %}
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{% url 'posts:create' %}">Post</a>
+                <a class="nav-item nav-link" href="{% url 'groups:all' %}">Groups</a>
+                <a class="nav-item nav-link" href="{% url 'groups:create' %}">Create Group</a>
+                <a class="nav-item nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+            </div>
+        </div>
+
+    {% else %}
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="{% url 'groups:all' %}">Groups</a>
+                <a class="nav-item nav-link" href="{% url 'accounts:login' %}">Login</a>
+                <a class="nav-item nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>
+            </div>
+        </div>
+
+    {% endif %}
+</nav>
+
+<div class="container myContent">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
