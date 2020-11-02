@@ -1,52 +1,269 @@
-<!DOCTYPE html>
+{#<!DOCTYPE html>#}
+{#{% load static %}#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Social Hub</title>#}
+{#    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"#}
+{#          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">#}
+{#    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"#}
+{#            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"#}
+{#            crossorigin="anonymous"></script>#}
+{#    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">#}
+{##}
+{#</head>#}
+{#<body>#}
+{##}
+{#<nav class="navbar navbar-expand-lg navbar-dark bg-dark">#}
+{#    <a class="navbar-brand" href="{% url 'home' %}">Social Hub</a>#}
+{#    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"#}
+{#            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">#}
+{#        <span class="navbar-toggler-icon"></span>#}
+{#    </button>#}
+{#    {% if user.is_authenticated %}#}
+{##}
+{#        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">#}
+{#            <div class="navbar-nav">#}
+{#                <a class="nav-item nav-link" href="{% url 'posts:create' %}">Post</a>#}
+{#                <a class="nav-item nav-link" href="{% url 'groups:all' %}">Groups</a>#}
+{#                <a class="nav-item nav-link" href="{% url 'groups:create' %}">Create Group</a>#}
+{#                <a class="nav-item nav-link" href="{% url 'accounts:logout' %}">Logout</a>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#    {% else %}#}
+{##}
+{#        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">#}
+{#            <div class="navbar-nav">#}
+{#                <a class="nav-item nav-link" href="{% url 'groups:all' %}">Groups</a>#}
+{#                <a class="nav-item nav-link" href="{% url 'accounts:login' %}">Login</a>#}
+{#                <a class="nav-item nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#    {% endif %}#}
+{#</nav>#}
+{##}
+{#<div class="container myContent">#}
+{#    {% block content %}#}
+{#    {% endblock %}#}
+{#</div>#}
+{#</body>#}
+{#</html>#}
 {% load static %}
-<html lang="en">
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href={% static "groups/src/assets/images/favicon.png" %}}>
     <title>Social Hub</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-            crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap" rel="stylesheet">
-
+    <link href={% static "groups/src/assets/extra-libs/c3/c3.min.css" %} rel="stylesheet">
+    <link href={% static "groups/src/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" %} rel="stylesheet"/>
+    <link href={% static "groups/src/dist/css/style.min.css" %} rel="stylesheet">
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+
 <body>
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="{% url 'home' %}">Social Hub</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    {% if user.is_authenticated %}
-
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="{% url 'posts:create' %}">Post</a>
-                <a class="nav-item nav-link" href="{% url 'groups:all' %}">Groups</a>
-                <a class="nav-item nav-link" href="{% url 'groups:create' %}">Create Group</a>
-                <a class="nav-item nav-link" href="{% url 'accounts:logout' %}">Logout</a>
-            </div>
-        </div>
-
-    {% else %}
-
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-item nav-link" href="{% url 'groups:all' %}">Groups</a>
-                <a class="nav-item nav-link" href="{% url 'accounts:login' %}">Login</a>
-                <a class="nav-item nav-link" href="{% url 'accounts:signup' %}">Sign Up</a>
-            </div>
-        </div>
-
-    {% endif %}
-</nav>
-
-<div class="container myContent">
-    {% block content %}
-    {% endblock %}
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
 </div>
+<div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+     data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+    <header class="topbar" data-navbarbg="skin6">
+        <nav class="navbar top-navbar navbar-expand-md">
+            <div class="navbar-header" data-logobg="skin6">
+                <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i
+                        class="ti-menu ti-close"></i></a>
+
+                <div class="navbar-brand">
+                    <a href={% static "groups/src/html/index.html" %}>
+                        <b class="logo-icon">
+                            <img src={% static "groups/src/assets/images/logo-icon.png" %}
+                                         class="dark-logo"/>
+                            <img src={% static "groups/src/assets/images/logo-icon.png" %}
+                                         class="light-logo"/>
+                        </b>
+                        <span class="logo-text">
+                            <h2 class="dark-logo">Social Blog</h2>
+                        </span>
+                    </a>
+                </div>
+                <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                   data-toggle="collapse" data-target="#navbarSupportedContent"
+                   aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
+                        class="ti-more"></i></a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
+                </ul>
+
+                <ul class="navbar-nav float-right">
+                    <li class="nav-item d-none d-md-block">
+                        <a class="nav-link" href="javascript:void(0)">
+                            <form>
+                                <div class="customize-input">
+                                    <input class="form-control custom-shadow custom-radius border-0 bg-white"
+                                           type="search" placeholder="Search" aria-label="Search">
+                                    <i class="form-control-icon" data-feather="search"></i>
+                                </div>
+                            </form>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown float-right">
+                        {% if user.is_authenticated %}
+                            <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <img src={% static "groups/src/assets/images/users/profile-pic.jpg" %} alt="user"
+                                     class="rounded-circle"
+                                     width="40">
+
+                                <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
+                                        class="text-dark">{{ user.username }}</span> <i data-feather="chevron-down"
+                                                                                        class="svg-icon"></i></span>
+
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
+                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="user"
+                                                                                      class="svg-icon mr-2 ml-1"></i>
+                                    My Profile</a>
+                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="credit-card"
+                                                                                      class="svg-icon mr-2 ml-1"></i>
+                                    My Balance</a>
+                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="mail"
+                                                                                      class="svg-icon mr-2 ml-1"></i>
+                                    Inbox</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="settings"
+                                                                                      class="svg-icon mr-2 ml-1"></i>
+                                    Account Setting</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'logout' %}"><i data-feather="power"
+                                                                                      class="svg-icon mr-2 ml-1"></i>
+                                    Logout</a>
+                                <div class="dropdown-divider"></div>
+                                <div class="pl-4 p-3"><a href="javascript:void(0)" class="btn btn-sm btn-info">View
+                                    Profile</a></div>
+                            </div>
+                            </li>
+                            <li class="nav-item">
+                                {% else %}
+                                <a href="{% url 'accounts:login' %}"
+                                   aria-haspopup="true" aria-expanded="false" class="nav-link">
+                                    <img src="../static/groups/src/assets/images/users/profile-pic.jpg" alt="user"
+                                         class="rounded-circle"
+                                         width="40">
+
+                                    <span class="ml-2 d-none d-lg-inline-block"><span
+                                            class="text-dark">Login</span></span>
+
+                                </a>
+                            </li>
+                        {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="left-sidebar" data-sidebarbg="skin6">
+        <!-- Sidebar scroll-->
+        <div class="scroll-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar navigation-->
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav">
+                    <li class="sidebar-item"><a class="sidebar-link sidebar-link"
+                                                href="{% url 'groups:all' %}"
+                                                aria-expanded="false"><i data-feather="home"
+                                                                         class="feather-icon"></i><span
+                            class="hide-menu">Groups
+                    </span></a></li>
+                    <li class="list-divider"></li>
+                    <li class="sidebar-item"><a class="sidebar-link sidebar-link"
+                                                href="{% url 'posts:create' %}"
+                                                aria-expanded="false"><i data-feather="calendar"
+                                                                         class="feather-icon"></i><span
+                            class="hide-menu">Posts</span></a></li>
+
+                    <li class="list-divider"></li>
+
+                    <li class="nav-small-cap"><span class="hide-menu">Authentication</span></li>
+
+                    <li class="sidebar-item"><a class="sidebar-link sidebar-link"
+                                                href="{% url 'accounts:login' %}"
+                                                aria-expanded="false"><i data-feather="lock"
+                                                                         class="feather-icon"></i><span
+                            class="hide-menu">Login
+                                </span></a>
+                    </li>
+                    <li class="sidebar-item"><a class="sidebar-link sidebar-link"
+                                                href="{% url 'accounts:signup' %}"
+                                                aria-expanded="false"><i data-feather="lock"
+                                                                         class="feather-icon"></i><span
+                            class="hide-menu">Register
+                                </span></a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- End Sidebar navigation -->
+        </div>
+        <!-- End Sidebar scroll-->
+    </aside>
+
+    <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-7 align-self-center">
+                    {% if user.is_authenticated %}
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Good
+                            Morning {{ user.username }}!</h3>
+                    {% else %}
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Good Morning! Please
+                            login</h3>
+                    {% endif %}
+
+                    {% block content %}
+                    {% endblock %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <footer class="footer text-center text-muted">
+        All Rights Reserved by Manthan Bhardwaj.</a>
+    </footer>
+</div>
+
+</div>
+
+<script src={% static "groups/src/assets/libs/jquery/dist/jquery.min.js" %}></script>
+<script src={% static "groups/src/assets/libs/popper.js/dist/umd/popper.min.js" %}></script>
+<script src={% static "groups/src/assets/libs/bootstrap/dist/js/bootstrap.min.js" %}></script>
+<!-- apps -->
+<!-- apps -->
+<script src={% static "groups/src/dist/js/app-style-switcher.js" %}></script>
+<script src={% static "groups/src/dist/js/feather.min.js" %}></script>
+<script src={% static "groups/src/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js" %}></script>
+<script src={% static "groups/src/dist/js/sidebarmenu.js" %}></script>
+<!--Custom JavaScript -->
+<script src={% static "groups/src/dist/js/custom.min.js" %}></script>
+<!--This page JavaScript -->
+<script src= {% static "groups/src/assets/extra-libs/c3/d3.min.js" %}></script>
+<script src={% static "groups/src/assets/extra-libs/c3/c3.min.js" %}></script>
+<script src={% static "groups/src/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js" %}></script>
+<script src={% static "groups/src/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js" %}></script>
+<script src={% static "groups/src/dist/js/pages/dashboards/dashboard1.min.js" %}></script>
+<script src={% static "groups/src/dist/js/pages/dashboards/dashboard1.min.js" %}></script>
 </body>
+
 </html>

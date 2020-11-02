@@ -1,7 +1,7 @@
 {% extends 'posts/post_base.html' %}
 
 {% block pre_post_content %}
-    <div class="col-md-4">
+    <div class="col-lg-4 col-md-12">
         {% if user.is_authenticated %}
             <div class="card card-with-shadow">
                 <div class="content">
@@ -16,16 +16,17 @@
                 </div>
             </div>
         {% endif %}
-    <div class="card card-with-shadow">
-        <div class="content">
-            <h5 class="title">All groups</h5>
-            <ul class="list-unstyled">
-                {% for other_group in get_other_groups %}
-                    <li class="group li-with-bullet"><a href="{% url 'groups:single' slug=other_group.slug %}" </li>
-                {% endfor %}
-            </ul>
+        <div class="card card-with-shadow">
+            <div class="content">
+                <h5 class="title">All groups</h5>
+                <ul class="list-unstyled">
+                    {% for other_group in get_other_groups %}
+                        <li class="group li-with-bullet"><a href="{% url 'groups:single' slug=other_group.slug %}"></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
-    </div>
     </div>
 {% endblock %}
 
