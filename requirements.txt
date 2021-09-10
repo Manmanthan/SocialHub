@@ -10,4 +10,4 @@ pycparser==2.20
 pytz==2020.1
 six==1.15.0
 soupsieve==2.0.1
-sqlparse==0.4.1
+sqlparse==0.4.2
