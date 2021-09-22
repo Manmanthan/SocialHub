@@ -2,7 +2,7 @@ asgiref==3.2.10
 beautifulsoup4==4.9.3
 bootstrap4==0.1.0
 cffi==1.14.3
-Django==3.1.2
+Django==3.1.13
 django-bootstrap4==2.3.1
 django-braces==1.14.0
 misaka==2.1.1
